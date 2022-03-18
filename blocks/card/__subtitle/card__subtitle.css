@@ -1,0 +1,11 @@
+.card__subtitle {
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 79px;
+  position: relative;
+  top: -3px;
+  border-bottom-right-radius: 7px;
+  border-bottom-left-radius: 7px;
+}

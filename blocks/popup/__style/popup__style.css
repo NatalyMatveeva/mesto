@@ -1,0 +1,24 @@
+.popup__style {
+  display: block;
+  font-family: inherit;
+  border: none;
+  border-bottom: 1px solid #000000;
+  outline: none;
+  margin-left: 36px;
+  width: 358px;
+}
+
+.popup__style::placeholder {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+@media screen and (max-width: 320px) {
+  .popup__style {
+    width: 238px;
+    margin-left: 22px;
+  }
+}
