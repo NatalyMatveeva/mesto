@@ -20,14 +20,14 @@
 
         <div class="profile__info">
           <div class="profile__title">
-            <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button class="profile__edit-button"></button>
+            <h1 class="profile__text profile__name">Жак-Ив Кусто</h1>
+            <button type="button" class="profile__edit-button"></button>
           </div>
 
-          <p class="profile__prof">Исследователь океана</p>
+          <p class="profile__text profile__prof">Исследователь океана</p>
         </div>
 
-        <button class="profile__add-button"></button>
+        <button type="button" class="profile__add-button"></button>
       </section>
 
       <section class="cards">
@@ -37,8 +37,8 @@
             alt="Карачаевск"
             class="card__foto"/>
           <div class="card__subtitle">
-            <h1 class="card__text">Карачаевск</h1>
-            <button class="card__like"></button>
+            <h2 class="card__text">Карачаевск</h2>
+            <button type="button" class="card__like"></button>
           </div>
         </div>
 
@@ -48,16 +48,16 @@
             alt="Гора Эльбрус"
             class="card__foto"/>
           <div class="card__subtitle">
-            <h1 class="card__text">Гора Эльбрус</h1>
-            <button class="card__like"></button>
+            <h2 class="card__text">Гора Эльбрус</h2>
+            <button type="button" class="card__like"></button>
           </div>
         </div>
 
         <div class="card">
-          <img src="./images/Dombai.png" alt="Домбай" class="card__foto"/>
+          <img src="./images/Dombai.png" alt="Домбай" class="card__foto" />
           <div class="card__subtitle">
-            <h1 class="card__text">Домбай</h1>
-            <button class="card__like"></button>
+            <h2 class="card__text">Домбай</h2>
+            <button type="button" class="card__like"></button>
           </div>
         </div>
 
@@ -67,16 +67,16 @@
             alt="Гора Эльбрус"
             class="card__foto"/>
           <div class="card__subtitle">
-            <h1 class="card__text">Гора Эльбрус</h1>
-            <button class="card__like"></button>
+            <h2 class="card__text">Гора Эльбрус</h2>
+            <button type="button" class="card__like"></button>
           </div>
         </div>
 
         <div class="card">
-          <img src="./images/Dombai.png" alt="Домбай" class="card__foto"/>
+          <img src="./images/Dombai.png" alt="Домбай" class="card__foto" />
           <div class="card__subtitle">
-            <h1 class="card__text">Домбай</h1>
-            <button class="card__like"></button>
+            <h2 class="card__text">Домбай</h2>
+            <button type="button" class="card__like"></button>
           </div>
         </div>
 
@@ -86,8 +86,8 @@
             alt="Карачаево-Черкессия"
             class="card__foto"/>
           <div class="card__subtitle">
-            <h1 class="card__text">Карачаево-Черкессия</h1>
-            <button class="card__like"></button>
+            <h2 class="card__text">Карачаево-Черкессия</h2>
+            <button type="button" class="card__like"></button>
           </div>
         </div>
       </section>
@@ -99,18 +99,18 @@
 
     <div class="popup">
       <div class="popup__window">
-        <button class="popup__close-button"></button>
+        <button type="button" class="popup__close-button"></button>
         <section class="popup__content">
           <form class="popup__form">
             <h3 class="popup__title">Редактировать профиль</h3>
             <input
               type="text"
-              class="popup__style popup__name"
-              placeholder="Жак-Ив Кусто"/>
+              name="firstname"
+              class="popup__style popup__name"/>
             <input
               type="text"
-              class="popup__style popup__prof"
-              placeholder="Исследователь океана"/>
+              name="profession"
+              class="popup__style popup__prof"/>
             <button type="submit" class="popup__sumbit">Сохранить</button>
           </form>
         </section>

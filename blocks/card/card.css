@@ -1,4 +1,35 @@
 .card {
   margin: 0;
   border-radius: 10px;
+  object-fit: cover;
+  width: 282px;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 0;
+  justify-self: center;
+  padding-top: 20px;
+}
+
+@media screen and (max-width: 1250px) {
+  .card {
+    width: 270px;
+  }
+}
+
+@media screen and (max-width: 1033px) {
+  .card {
+    width: 370px;
+  }
+}
+
+@media screen and (max-width: 915px) {
+  .card {
+    width: 320px;
+  }
+}
+
+@media screen and (max-width: 772px) {
+  .card {
+    width: 282px;
+  }
 }

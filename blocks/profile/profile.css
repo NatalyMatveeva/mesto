@@ -9,7 +9,19 @@
   box-sizing: border-box;
 }
 
-@media screen and (max-width: 1045px) {
+@media screen and (max-width: 1250px) {
+  .profile {
+    width: calc(100% - 150px * 2);
+  }
+}
+
+@media screen and (max-width: 1122px) {
+  .profile {
+    width: calc(100% - 100px * 2);
+  }
+}
+
+@media screen and (max-width: 1033px) {
   .profile {
     padding-top: 42px;
     width: calc(100% - 19px * 2);
@@ -17,5 +29,17 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+  }
+}
+
+@media screen and (max-width: 915px) {
+  .profile {
+    width: calc(100% - 60px * 2);
+  }
+}
+
+@media screen and (max-width: 772px) {
+  .profile {
+    width: calc(100% - 19px * 2);
   }
 }

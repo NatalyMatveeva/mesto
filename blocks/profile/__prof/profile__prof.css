@@ -1,12 +1,12 @@
 .profile__prof {
+  padding-top: 16px;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
-  margin: 0;
 }
 
-@media screen and (max-width: 1045px) {
+@media screen and (max-width: 772px) {
   .profile__prof {
     font-style: normal;
     font-weight: 400;

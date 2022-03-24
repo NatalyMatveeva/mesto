@@ -15,11 +15,11 @@
   background-position: center;
 }
 
-@media screen and (max-width: 1045px) {
+@media screen and (max-width: 1033px) {
   .profile__add-button {
     margin: 0;
     margin-top: 36px;
-    width: 100%;
+    width: 282px;
   }
 }
 
