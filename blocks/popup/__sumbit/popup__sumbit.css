@@ -12,7 +12,17 @@
   opacity: 0.8;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 772px) {
+  .popup__sumbit {
+    margin-top: 45px;
+    margin-left: 22px;
+    width: 338px;
+    height: 46px;
+  }
+}
+
+
+@media screen and (max-width: 487px) {
   .popup__sumbit {
     margin-top: 45px;
     margin-left: 22px;

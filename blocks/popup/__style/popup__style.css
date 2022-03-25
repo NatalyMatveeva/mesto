@@ -2,13 +2,10 @@
   display: block;
   font-family: inherit;
   border: none;
-  border-bottom: 1px solid #000000;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   outline: none;
   margin-left: 36px;
   width: 358px;
-}
-
-.popup__style::placeholder {
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
@@ -16,9 +13,15 @@
   line-height: 17px;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 772px) {
+  .popup__style {
+    margin-left: 22px;
+    width: 338px;
+  }
+}
+
+@media screen and (max-width: 487px) {
   .popup__style {
     width: 238px;
-    margin-left: 22px;
   }
 }

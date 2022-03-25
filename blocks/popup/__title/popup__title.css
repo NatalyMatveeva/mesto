@@ -9,7 +9,8 @@
   color: black;
 }
 
-@media screen and (max-width: 320px) {
+
+@media screen and (max-width: 487px) {
   .popup__title {
     padding-top: 25px;
     padding-left: 22px;
