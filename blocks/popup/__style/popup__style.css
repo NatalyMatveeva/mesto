@@ -1,6 +1,5 @@
 .popup__style {
   display: block;
-  font-family: inherit;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   outline: none;
