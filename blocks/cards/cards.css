@@ -36,5 +36,6 @@
     width: calc(100% - 19px * 2);
     flex-direction: column;
     align-items: center;
+    padding-top: 16px;
   }
 }
