@@ -1,7 +1,6 @@
-.card__foto{
+.card__foto {
   object-fit: cover;
   width: 282px;
- height: 282px;
-   box-sizing: border-box;
+  height: 282px;
+  box-sizing: border-box;
 }
-

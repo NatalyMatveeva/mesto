@@ -2,17 +2,13 @@
   background-image: url(../../../images/Like.svg);
   background-repeat: no-repeat;
   background-position: center;
-  width:  22px;
+  width: 22px;
   height: 19px;
   background-color: white;
   border: none;
   cursor: pointer;
 }
 
- .card__like:hover {
-  background-image: url(../../../images/AktivLike.svg); 
- }
-
-/* .card__like_active {
-  background: url(../../../images/AktivLike.svg) center no-repeat;
-} */
+.card__like:hover {
+  background-image: url(../../../images/AktivLike.svg);
+}
