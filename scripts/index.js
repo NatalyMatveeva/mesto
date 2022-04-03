@@ -107,15 +107,11 @@ deleteTempl.querySelector('.card__delete').addEventListener('click', function (e
 deleteTempl.remove();
 })
 
- cards.append(cardElement);
-
-});
-
 //Попап открытие карточки изображения
 
 const PopupPicture = document.querySelector('.popup-picture');
-const elementItem = cardTemplate.querySelector('.card').cloneNode(true);
-const imageToFull = elementItem.querySelector('.card__foto');
+//const elementItem = cardTemplate.querySelector('.card').cloneNode(true);
+const imageToFull = cardElement.querySelector('.card__foto');
 const imageFull = document.querySelector('.popup-picture__img');
 const imageTittle = document.querySelector('.popup-picture__title');
 
@@ -127,7 +123,9 @@ imageToFull.addEventListener('click',() => {
   imageTittle.textContent = element.name;
 openPopup(PopupPicture);
 })
+cards.append(cardElement);
 
+});
 
 // Добавление карточки через форму
 
