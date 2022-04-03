@@ -9,6 +9,10 @@
   cursor: pointer;
 }
 
-.card__like:hover {
-  background-image: url(../../../images/AktivLike.svg);
-}
+ .card__like:hover {
+  background-image: url(../../../images/AktivLike.svg); 
+ }
+
+/* .card__like_active {
+  background: url(../../../images/AktivLike.svg) center no-repeat;
+} */

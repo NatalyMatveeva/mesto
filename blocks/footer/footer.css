@@ -9,40 +9,22 @@
 
 @media screen and (max-width: 1250px) {
   .footer {
-    width: calc(100% - 150px * 2);
+    width: calc(100% - 80px * 2);
     margin: 0 auto;
-  }
-}
-
-@media screen and (max-width: 1122px) {
-  .footer {
-    width: calc(100% - 100px * 2);
   }
 }
 
 @media screen and (max-width: 1033px) {
   .footer {
-    width: calc(100% - 80px * 2);
+    width: calc(100% - 30px * 2);
   }
 }
 
-@media screen and (max-width: 915px) {
-  .footer {
-    width: calc(100% - 60px * 2);
-  }
-}
 
-@media screen and (max-width: 772px) {
+@media screen and (max-width: 626px) {
   .footer {
-    text-align: center;
     width: calc(100% - 19px * 2);
     padding-top: 39px;
     padding-bottom: 36px;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .footer {
-    text-align: start;
   }
 }

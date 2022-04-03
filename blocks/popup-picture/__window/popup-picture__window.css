@@ -1,0 +1,13 @@
+.popup-picture__window{
+    position: relative;
+    height: auto;
+    width: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+ 

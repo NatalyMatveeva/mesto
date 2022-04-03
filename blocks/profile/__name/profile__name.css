@@ -3,26 +3,16 @@
   font-weight: 500;
   font-size: 42px;
   line-height: 48px;
-  max-width: 297px;
+  max-width: 295px;
 }
 
-@media screen and (max-width: 772px) {
+@media screen and (max-width: 626px) {
   .profile__name {
     font-style: normal;
     font-weight: 500;
     font-size: 27px;
     line-height: 33px;
-  }
-}
-
-@media screen and (max-width: 422px) {
-  .profile__name {
-   max-width: 180px;
-  }
-}
-
-@media screen and (max-width: 395px) {
-  .profile__name {
-    max-width: 189px;
+    max-width: 200px;
+    text-align: center;
   }
 }

@@ -1,0 +1,18 @@
+.popup-newcard__nameplace::placeholder{
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #C4C4C4
+}
+
+
+.popup-newcard__nameplace{
+    margin-top: 54px;
+  }
+
+  @media screen and (max-width: 320px) {
+    .popup-newcard__nameplace {
+      margin-top: 75px;
+    }
+  }

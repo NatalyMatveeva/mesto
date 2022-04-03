@@ -8,30 +8,17 @@
 
 @media screen and (max-width: 1250px) {
   .header {
-    width: calc(100% - 150px * 2);
-  }
-}
-
-@media screen and (max-width: 1122px) {
-  .header {
-    width: calc(100% - 100px * 2);
+    width: calc(100% - 80px * 2);
   }
 }
 
 @media screen and (max-width: 1033px) {
   .header {
-    width: calc(100% - 80px * 2);
+    width: calc(100% - 30px * 2);
   }
 }
 
-@media screen and (max-width: 915px) {
-  .header {
-    width: calc(100% - 60px * 2);
-  }
-}
-
-
-@media screen and (max-width: 772px) {
+@media screen and (max-width: 626px) {
   .header {
     width: 100%;
     padding-top: 28px;

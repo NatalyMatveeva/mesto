@@ -1,4 +1,4 @@
-.popup__sumbit {
+.popup__submit {
   margin-top: 48px;
   margin-left: 36px;
   border-radius: 10px;
@@ -8,12 +8,12 @@
   color: white;
 }
 
-.popup__sumbit:hover {
+.popup__submit:hover {
   opacity: 0.8;
 }
 
 @media screen and (max-width: 772px) {
-  .popup__sumbit {
+  .popup__submit {
     margin-top: 45px;
     margin-left: 22px;
     width: 338px;
@@ -23,7 +23,7 @@
 
 
 @media screen and (max-width: 487px) {
-  .popup__sumbit {
+  .popup__submit {
     margin-top: 45px;
     margin-left: 22px;
     width: 238px;
