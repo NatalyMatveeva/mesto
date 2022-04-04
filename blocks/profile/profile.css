@@ -15,24 +15,12 @@
   }
 }
 
-@media screen and (max-width: 1033px) {
-  .profile {
-    width: calc(100% - 30px * 2);
-  }
-}
-
-@media screen and (max-width: 1033px) {
+@media screen and (max-width: 1039px) {
   .profile {
     padding-top: 42px;
     width: calc(100% - 19px * 2);
     flex-direction: column;
     align-items: center;
     justify-content: center;
-  }
-}
-
-@media screen and (max-width: 626px) {
-  .profile {
-    width: calc(100% - 19px * 2);
   }
 }

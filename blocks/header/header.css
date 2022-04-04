@@ -6,19 +6,19 @@
   border-bottom: 1px solid  rgba(32.94%, 32.94%, 32.94%, 0.7);
 }
 
-@media screen and (max-width: 1250px) {
+@media screen and (max-width: 1279px) {
   .header {
     width: calc(100% - 80px * 2);
   }
 }
 
-@media screen and (max-width: 1033px) {
+@media screen and (max-width: 740px) {
   .header {
-    width: calc(100% - 30px * 2);
+    width: calc(100% - 19px * 2);
   }
 }
 
-@media screen and (max-width: 626px) {
+@media screen and (max-width: 618px) {
   .header {
     width: 100%;
     padding-top: 28px;

@@ -5,10 +5,9 @@
   font-size: 18px;
   line-height: 22px;
   max-width: 295px;
-
 }
 
-@media screen and (max-width: 626px) {
+@media screen and (max-width: 618px) {
   .profile__prof {
     font-style: normal;
     font-weight: 400;
@@ -17,18 +16,5 @@
     padding-top: 14px;
     text-align: center;
     max-width: 158px;
-    }
-}
-
-/*
-@media screen and (max-width: 422px) {
-  .profile__prof {
-   max-width: 180px;
   }
 }
-
-@media screen and (max-width: 626px) {
-  .profile__prof {
-   max-width: 158px;
-  }
-} */
