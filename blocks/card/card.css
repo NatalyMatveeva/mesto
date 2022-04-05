@@ -8,5 +8,6 @@
   padding: 0;
   justify-self: center;
   position: relative;
-
+  display: flex;
+  flex-direction: column;
 }
