@@ -39,10 +39,13 @@
 @import url(../blocks/popup/__prof/popup__prof.css);
 @import url(../blocks/popup/__submit/popup__submit.css);
 @import url(../blocks/popup/__style/popup__style.css);
+@import url(../blocks/popup/__style/_error/popup__style_error.css);
+@import url(../blocks/popup/__error/popup__error.css);
+
+@import url(../blocks/popup/__submit/_inactive/popup__submit_inactive.css);
 
 @import url(../blocks/popup-newcard/__nameplace/popup-newcard__nameplace.css);
 @import url(../blocks/popup-newcard/__link/popup-newcard__link.css);
-@import url(../blocks/popup-newcard/__new-submit/popup__new-submit.css);
 @import url(../blocks/popup-newcard/__form/popup-newcard__form.css);
 @import url(../blocks/card/__like/_active/card__like_active.css);
 

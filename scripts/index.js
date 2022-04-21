@@ -98,7 +98,7 @@ function createCard(element) {
   cardElement.querySelector(".card__text").textContent = element.name;
 
   //Лайк
-  
+
   cardElement.querySelector(".card__like").addEventListener("click", function (evt) {
       evt.target.classList.toggle("card__like_active");
     });
