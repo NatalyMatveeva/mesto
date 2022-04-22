@@ -20,11 +20,21 @@ const buttonPictureClose = document.querySelector(".popup-picture__close-button"
 // Функция открытия popup
 function openPopup(popup) {
   popup.classList.add("popup_opened");
+  document.addEventListener("keydown", closePopupByEsc);
 }
 
 //Функция закрытия popup
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
+  document.removeEventListener("keydown", closePopupByEsc);
+}
+
+//функции закрытия попапов по Esc
+function closePopupByEsc(evt) {
+  const popupOpened = document.querySelector(".popup_opened");
+  if (evt.key === "Escape") {
+    closePopup(popupOpened);
+  }
 }
 
 buttonEdit.addEventListener("click", () => {
@@ -35,6 +45,20 @@ buttonEdit.addEventListener("click", () => {
 
 buttonEditClose.addEventListener("click", () => {
   closePopup(popupNewProfile);
+});
+
+//функции закрытия попапов по оверлей
+document.querySelectorAll(".popup").forEach((popup) => {
+  popup.addEventListener("click", (event) => {
+    const target = event.target;
+
+    if (
+      target.classList.contains("popup") ||
+      target.classList.contains("popup__close")
+    ) {
+      closePopup(target);
+    }
+  });
 });
 
 // Открытие попапа добавления карточки
@@ -99,14 +123,18 @@ function createCard(element) {
 
   //Лайк
 
-  cardElement.querySelector(".card__like").addEventListener("click", function (evt) {
+  cardElement
+    .querySelector(".card__like")
+    .addEventListener("click", function (evt) {
       evt.target.classList.toggle("card__like_active");
     });
 
   //Удаление
 
   const templdDelete = cardElement.querySelector(".card");
-  templdDelete.querySelector(".card__delete").addEventListener("click", function (evt) {
+  templdDelete
+    .querySelector(".card__delete")
+    .addEventListener("click", function (evt) {
       templdDelete.remove();
     });
 
