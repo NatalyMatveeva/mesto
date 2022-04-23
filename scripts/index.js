@@ -9,10 +9,10 @@ const buttonAddClose = document.querySelector(".popup-newcard__close-button");
 const formEditElement = document.querySelector(".popup__form");
 const nameInput = document.querySelector(".popup__name");
 const profInput = document.querySelector(".popup__prof");
-const nameText = document.querySelector(".profile__name");
-const profText = document.querySelector(".profile__prof");
+const profileName = document.querySelector(".profile__name");
+const profileProfession = document.querySelector(".profile__prof");
 
-const PopupPicture = document.querySelector(".popup-picture");
+const popupPicture = document.querySelector(".popup-picture");
 const imageFull = document.querySelector(".popup-picture__img");
 const imageTittle = document.querySelector(".popup-picture__title");
 const buttonPictureClose = document.querySelector(".popup-picture__close-button");
@@ -38,14 +38,15 @@ function closePopupByEsc(evt) {
 }
 
 buttonEdit.addEventListener("click", () => {
-  nameInput.value = nameText.textContent;
-  profInput.value = profText.textContent;
+  const editProfile = document.forms.profile;
+  editProfile.reset();
   openPopup(popupNewProfile);
 });
 
 buttonEditClose.addEventListener("click", () => {
   closePopup(popupNewProfile);
 });
+
 
 //функции закрытия попапов по оверлей
 document.querySelectorAll(".popup").forEach((popup) => {
@@ -64,22 +65,27 @@ document.querySelectorAll(".popup").forEach((popup) => {
 // Открытие попапа добавления карточки
 
 buttonAdd.addEventListener("click", () => {
+  const editPlace = document.forms.place;
+  editPlace.reset();
   openPopup(popupNewPlace);
+
 });
 
 buttonAddClose.addEventListener("click", () => {
   closePopup(popupNewPlace);
 });
 
+
 // Обработчик «отправки» формы
 function formSubmitHandler(evt) {
   evt.preventDefault();
-  nameText.textContent = nameInput.value;
-  profText.textContent = profInput.value;
+  profileName.textContent = nameInput.value;
+  profileProfession.textContent = profInput.value;
   closePopup(popupNewProfile);
 }
 
 formEditElement.addEventListener("submit", formSubmitHandler);
+
 
 const cards = document.querySelector(".cards");
 const cardTemplate = document.querySelector("#tmpl").content;
@@ -144,11 +150,11 @@ function createCard(element) {
     imageFull.src = element.link;
     imageFull.alt = element.name;
     imageTittle.textContent = element.name;
-    openPopup(PopupPicture);
+    openPopup(popupPicture);
   });
 
   buttonPictureClose.addEventListener("click", () => {
-    closePopup(PopupPicture);
+    closePopup(popupPicture);
   });
 
   return cardElement;

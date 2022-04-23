@@ -12,12 +12,7 @@ const hideInputError = (formElement, inputElement, params) => {
 
 const isValid = (formElement, inputElement, params) => {
   if (!inputElement.validity.valid) {
-    showInputError(
-      formElement,
-      inputElement,
-      inputElement.validationMessage,
-      params
-    );
+    showInputError(formElement, inputElement, inputElement.validationMessage, params);
   } else {
     hideInputError(formElement, inputElement, params);
   }
@@ -53,6 +48,9 @@ const setEventListeners = (formElement, params) => {
     });
   });
 };
+
+// Очистить форму
+
 
 const enableValidation = (params) => {
   const formList = Array.from(document.querySelectorAll(params.formSelector));
