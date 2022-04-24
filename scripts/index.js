@@ -6,7 +6,7 @@ const popupNewPlace = document.querySelector(".popup-newcard");
 const buttonAdd = document.querySelector(".profile__add-button");
 const buttonAddClose = document.querySelector(".popup-newcard__close-button");
 
-const formEditElement = document.querySelector(".popup__form");
+const formEditProfileElement = document.querySelector(".popup__form");
 const nameInput = document.querySelector(".popup__name");
 const profInput = document.querySelector(".popup__prof");
 const profileName = document.querySelector(".profile__name");
@@ -21,6 +21,10 @@ const buttonPictureClose = document.querySelector(".popup-picture__close-button"
 function openPopup(popup) {
   popup.classList.add("popup_opened");
   document.addEventListener("keydown", closePopupByEsc);
+
+  const buttonElement = popup.querySelector('.popup__submit');
+  buttonElement.classList.add('popup__submit_inactive');
+  buttonElement.disabled = true;
 }
 
 //Функция закрытия popup
@@ -77,14 +81,14 @@ buttonAddClose.addEventListener("click", () => {
 
 
 // Обработчик «отправки» формы
-function formSubmitHandler(evt) {
+function formEditProfileSubmitHandler(evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileProfession.textContent = profInput.value;
   closePopup(popupNewProfile);
 }
 
-formEditElement.addEventListener("submit", formSubmitHandler);
+formEditProfileElement.addEventListener("submit", formEditProfileSubmitHandler);
 
 
 const cards = document.querySelector(".cards");
