@@ -1,5 +1,6 @@
 import { Card, initialCards } from './Card.js';
-import { FormValidator, params } from './validate.js';
+import { FormValidator, params } from './FormValidator.js';
+
 
 const popupNewProfile = document.querySelector(".popup_new-profile");
 const buttonEdit = document.querySelector(".profile__edit-button");
@@ -41,8 +42,6 @@ export function closePopupByEsc(evt) {
 }
 
 buttonEdit.addEventListener("click", () => {
-  const editProfile = document.forms.profile;
-  editProfile.reset();
   openPopup(popupNewProfile);
 });
 
@@ -91,6 +90,53 @@ formEditProfileElement.addEventListener("submit", formEditProfileSubmitHandler);
 
 
 const cards = document.querySelector(".cards");
+const cardTemplate = document.querySelector("#tmpl").content;
+
+function createCard (element) {
+  const cardElement = cardTemplate.cloneNode(true);
+
+
+  const cardFoto = cardElement.querySelector(".card__foto");
+
+  cardFoto.src = element.link;
+  cardFoto.alt = element.name;
+  cardElement.querySelector(".card__text").textContent = element.name;
+
+  //Лайк
+  cardElement
+    .querySelector(".card__like")
+    .addEventListener("click", function (evt) {
+      evt.target.classList.toggle("card__like_active");
+    });
+
+  //Удаление
+  const deleteTempl = cardElement.querySelector(".card");
+  deleteTempl
+    .querySelector(".card__delete")
+    .addEventListener("click", function (evt) {
+      deleteTempl.remove();
+    });
+
+  //Попап открытия и закрытия карточки изображения
+  const PopupPicture = document.querySelector('.popup-picture');
+  const imageFull = document.querySelector('.popup-picture__img');
+  const imageTittle = document.querySelector('.popup-picture__title');
+  const closeButtonPicture = document.querySelector(".popup-picture__close-button");
+
+  cardFoto.addEventListener('click',() => {
+    imageFull.src = element.link;
+    imageFull.alt = element.name;
+    imageTittle.textContent = element.name;
+    openPopup(PopupPicture);
+  });
+
+  closeButtonPicture.addEventListener("click", () => {
+   closePopup(PopupPicture);
+  });
+
+  return cardElement;
+}
+
 
 
 // Добавление карточки через форму
@@ -123,6 +169,10 @@ initialCards.forEach((item) => {
 
 
 const validatePopup__form = new FormValidator(params, formEditProfileElement);
-validatePopup__form.setEventListeners(params, formEditProfileElement);
+validatePopup__form.enableValidation();
 const validateAddNewcard__form = new FormValidator(params, formAddNewcard);
-validateAddNewcard__form.setEventListeners(params, formAddNewcard);
+validateAddNewcard__form.enableValidation();
+
+
+
+
