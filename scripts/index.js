@@ -90,53 +90,6 @@ formEditProfileElement.addEventListener("submit", formEditProfileSubmitHandler);
 
 
 const cards = document.querySelector(".cards");
-const cardTemplate = document.querySelector("#tmpl").content;
-
-function createCard (element) {
-  const cardElement = cardTemplate.cloneNode(true);
-
-
-  const cardFoto = cardElement.querySelector(".card__foto");
-
-  cardFoto.src = element.link;
-  cardFoto.alt = element.name;
-  cardElement.querySelector(".card__text").textContent = element.name;
-
-  //Лайк
-  cardElement
-    .querySelector(".card__like")
-    .addEventListener("click", function (evt) {
-      evt.target.classList.toggle("card__like_active");
-    });
-
-  //Удаление
-  const deleteTempl = cardElement.querySelector(".card");
-  deleteTempl
-    .querySelector(".card__delete")
-    .addEventListener("click", function (evt) {
-      deleteTempl.remove();
-    });
-
-  //Попап открытия и закрытия карточки изображения
-  const PopupPicture = document.querySelector('.popup-picture');
-  const imageFull = document.querySelector('.popup-picture__img');
-  const imageTittle = document.querySelector('.popup-picture__title');
-  const closeButtonPicture = document.querySelector(".popup-picture__close-button");
-
-  cardFoto.addEventListener('click',() => {
-    imageFull.src = element.link;
-    imageFull.alt = element.name;
-    imageTittle.textContent = element.name;
-    openPopup(PopupPicture);
-  });
-
-  closeButtonPicture.addEventListener("click", () => {
-   closePopup(PopupPicture);
-  });
-
-  return cardElement;
-}
-
 
 
 // Добавление карточки через форму
@@ -148,10 +101,13 @@ const formAddNewcard = document.querySelector(".popup-newcard__form");
 function saveCard(evt) {
   evt.preventDefault();
 
-  const cardElement = createCard({
+  const newCardContent =   {
     link: linkInput.value,
     name: namePlace.value,
-  });
+    }
+  const card = new Card (newCardContent, '#tmpl');
+  const cardElement = card.generateCard();
+
   cards.prepend(cardElement);
 
   closePopup(popupNewPlace);
@@ -172,7 +128,3 @@ const validatePopup__form = new FormValidator(params, formEditProfileElement);
 validatePopup__form.enableValidation();
 const validateAddNewcard__form = new FormValidator(params, formAddNewcard);
 validateAddNewcard__form.enableValidation();
-
-
-
-

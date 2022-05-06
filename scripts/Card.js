@@ -52,7 +52,6 @@ this._cardSelector = cardSelector;
   return cardElement;
   }
 
-
   generateCard() {
     this._element = this._getTemplate();
     this._setEventListeners();
