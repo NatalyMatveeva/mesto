@@ -1,6 +1,6 @@
-import { Card, initialCards } from './Card.js';
+import { Card } from './Card.js';
 import { FormValidator, params } from './FormValidator.js';
-
+import { initialCards, popupPicture, closePopup, openPopup  } from './utils.js';
 
 const popupNewProfile = document.querySelector(".popup_new-profile");
 const buttonEdit = document.querySelector(".profile__edit-button");
@@ -16,49 +16,27 @@ const profInput = document.querySelector(".popup__prof");
 const profileName = document.querySelector(".profile__name");
 const profileProfession = document.querySelector(".profile__prof");
 
-
-// Функция открытия popup
-export function openPopup(popup) {
-  popup.classList.add("popup_opened");
-  document.addEventListener("keydown", closePopupByEsc);
-
-  const buttonElement = popup.querySelector('.popup__submit');
-  buttonElement.classList.add('popup__submit_inactive');
-  buttonElement.disabled = true;
-}
-
-//Функция закрытия popup
-export function closePopup(popup) {
-  popup.classList.remove("popup_opened");
-  document.removeEventListener("keydown", closePopupByEsc);
-}
-
-//функции закрытия попапов по Esc
-export function closePopupByEsc(evt) {
-  const popupOpened = document.querySelector(".popup_opened");
-  if (evt.key === "Escape") {
-    closePopup(popupOpened);
-  }
+function inactiveSubmit(popup) {
+const buttonElement = popup.querySelector('.popup__submit');
+buttonElement.classList.add('popup__submit_inactive');
+buttonElement.disabled = true;
 }
 
 buttonEdit.addEventListener("click", () => {
   openPopup(popupNewProfile);
+  inactiveSubmit(popupNewProfile)
 });
 
 buttonEditClose.addEventListener("click", () => {
   closePopup(popupNewProfile);
 });
 
-
 //функции закрытия попапов по оверлей
 document.querySelectorAll(".popup").forEach((popup) => {
   popup.addEventListener("click", (event) => {
     const target = event.target;
 
-    if (
-      target.classList.contains("popup") ||
-      target.classList.contains("popup__close")
-    ) {
+    if (target.classList.contains("popup")) {
       closePopup(target);
     }
   });
@@ -67,10 +45,9 @@ document.querySelectorAll(".popup").forEach((popup) => {
 // Открытие попапа добавления карточки
 
 buttonAdd.addEventListener("click", () => {
-  const editPlace = document.forms.place;
-  editPlace.reset();
+  formAddNewcard.reset();
   openPopup(popupNewPlace);
-
+  inactiveSubmit(popupNewPlace);
 });
 
 buttonAddClose.addEventListener("click", () => {
@@ -88,7 +65,6 @@ function formEditProfileSubmitHandler(evt) {
 
 formEditProfileElement.addEventListener("submit", formEditProfileSubmitHandler);
 
-
 const cards = document.querySelector(".cards");
 
 
@@ -98,6 +74,12 @@ const linkInput = document.querySelector(".popup-newcard__link");
 const namePlace = document.querySelector(".popup-newcard__nameplace");
 const formAddNewcard = document.querySelector(".popup-newcard__form");
 
+function createCard(source, template){
+const card = new Card (source, template);
+const cardFilled = card.generateCard();
+return cardFilled;
+}
+
 function saveCard(evt) {
   evt.preventDefault();
 
@@ -105,11 +87,8 @@ function saveCard(evt) {
     link: linkInput.value,
     name: namePlace.value,
     }
-  const card = new Card (newCardContent, '#tmpl');
-  const cardElement = card.generateCard();
-
+    const cardElement = createCard(newCardContent, '#tmpl');
   cards.prepend(cardElement);
-
   closePopup(popupNewPlace);
 }
 
@@ -117,14 +96,16 @@ formAddNewcard.addEventListener("submit", saveCard);
 
 
 initialCards.forEach((item) => {
-  const card = new Card(item, '#tmpl');
-  const cardElement = card.generateCard();
-
+  const cardElement = createCard(item, '#tmpl');
   cards.append(cardElement);
   });
 
 
-const validatePopup__form = new FormValidator(params, formEditProfileElement);
-validatePopup__form.enableValidation();
+const validatePopupForm = new FormValidator(params, formEditProfileElement);
+validatePopupForm.enableValidation();
 const validateAddNewcard__form = new FormValidator(params, formAddNewcard);
 validateAddNewcard__form.enableValidation();
+
+document.querySelector('.popup-picture__close-button').addEventListener('click', () => {
+  closePopup(popupPicture);
+});
