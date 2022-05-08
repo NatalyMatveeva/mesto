@@ -25,6 +25,8 @@ buttonElement.disabled = true;
 buttonEdit.addEventListener("click", () => {
   openPopup(popupNewProfile);
   inactiveSubmit(popupNewProfile)
+   nameInput.value = profileName.textContent;
+   profInput.value = profileProfession.textContent;
 });
 
 buttonEditClose.addEventListener("click", () => {
@@ -103,8 +105,8 @@ initialCards.forEach((item) => {
 
 const validatePopupForm = new FormValidator(params, formEditProfileElement);
 validatePopupForm.enableValidation();
-const validateAddNewcard__form = new FormValidator(params, formAddNewcard);
-validateAddNewcard__form.enableValidation();
+const validateAddNewcardForm = new FormValidator(params, formAddNewcard);
+validateAddNewcardForm.enableValidation();
 
 document.querySelector('.popup-picture__close-button').addEventListener('click', () => {
   closePopup(popupPicture);
