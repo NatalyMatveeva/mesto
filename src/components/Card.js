@@ -1,19 +1,12 @@
-// import { openPopup } from "./index.js";
-import { popupPicture, openPopup } from "./utils.js";
-
-
-
-const imageFull = document.querySelector(".popup-picture__img");
-const imageTittle = document.querySelector(".popup-picture__title");
-
 
 //Создадим класс
 
 export class Card {
-  constructor (data, cardSelector) {
+  constructor ({data, handleCardClick}, cardSelector) {
 this._text = data.name;
 this._image = data.link;
 this._cardSelector = cardSelector;
+this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -28,11 +21,13 @@ this._cardSelector = cardSelector;
 
   generateCard() {
     this._element = this._getTemplate();
-    this._setEventListeners();
+
     // Добавим данные
-    this._element.querySelector('.card__foto').src = this._image;
+    this._cardPicture = this._element.querySelector('.card__foto');
+    this._cardPicture.src = this._image;
     this._element.querySelector('.card__text').textContent = this._text;
-    this._element.querySelector('.card__foto').alt = this._text;
+    this._cardPicture.alt = this._text;
+    this._setEventListeners();
 
     // Вернём элемент наружу
     return this._element;
@@ -41,13 +36,6 @@ this._cardSelector = cardSelector;
   _deleteCard() {
     this._element.remove();
 }
-
-_openBigPopup() {
-  imageFull.src = this._image;
-  imageFull.alt = this._text;
-  imageTittle.textContent = this._text;
-  openPopup(popupPicture);}
-
 
   // Обработчик
 
@@ -60,8 +48,8 @@ _openBigPopup() {
         evt.target.classList.toggle("card__like_active");
       });
 
-      this._element.querySelector('.card__foto').addEventListener('click', () => {
-        this._openBigPopup();
+      this._cardPicture.addEventListener('click', () => {
+        this._handleCardClick((this._text, this._image));
     });
    }
 }

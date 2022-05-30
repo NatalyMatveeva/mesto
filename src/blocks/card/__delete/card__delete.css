@@ -11,6 +11,7 @@
   cursor: pointer;
   outline: none;
   background-color: transparent;
+  z-index: 2;
 }
 
 .card__delete:hover {
