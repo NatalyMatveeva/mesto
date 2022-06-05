@@ -12,7 +12,7 @@ export const formAddNewcard = document.querySelector(".popup-newcard__form");
 export const userData = {
   userNameElement: '.profile__name',
   userInfoElement: '.profile__prof'
-}
+} 
 
 export const initialCards = [
   {
