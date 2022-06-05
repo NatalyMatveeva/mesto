@@ -1,4 +1,3 @@
-
 //Создадим класс
 
 export class Card {
@@ -53,4 +52,3 @@ this._handleCardClick = handleCardClick;
     });
    }
 }
-

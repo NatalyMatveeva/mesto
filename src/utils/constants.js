@@ -8,17 +8,11 @@ export const nameInput = document.querySelector(".popup__name");
 export const profInput = document.querySelector(".popup__prof");
 export const cards = document.querySelector(".cards");
 export const formAddNewcard = document.querySelector(".popup-newcard__form");
+
 export const userData = {
   userNameElement: '.profile__name',
   userInfoElement: '.profile__prof'
 }
-
-// import arhizImage from "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg";
-// import chelabinskImage from "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg";
-// import ivanovoImage from "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg";
-// import kamchatkaImage from "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg";
-// import holmogorskImage from "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg";
-// import baykalImage from "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg";
 
 export const initialCards = [
   {
@@ -46,4 +40,3 @@ export const initialCards = [
     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg"
   },
 ];
-

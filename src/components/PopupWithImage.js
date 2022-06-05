@@ -1,9 +1,9 @@
 import Popup from "./Popup.js";
 export class PopupWithImage extends Popup {
-  constructor (popupSelector) {
-    super(popupSelector);
-    this._image = this._popupSelector.querySelector('.popup-picture__img');
-    this._title = this._popupSelector.querySelector('.popup-picture__title');
+  constructor (popup) {
+    super(popup);
+    this._image = this._popup.querySelector('.popup-picture__img');
+    this._title = this._popup.querySelector('.popup-picture__title');
   }
 
   //Вставляем в попап картинку с src изображения, альтернативным текстом и подписью к картинке.

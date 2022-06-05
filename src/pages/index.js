@@ -1,12 +1,12 @@
-import './pages/index.css';
-import { Card } from './components/Card.js';
-import { FormValidator, params } from './components/FormValidator.js';
+import './index.css';
+import { Card } from '../components/Card.js';
+import { FormValidator, params } from '../components/FormValidator.js';
 import { initialCards, popupPicture,  popupNewProfile, buttonEdit, popupNewPlace, buttonAdd, formEditProfileElement,
-   nameInput, profInput, cards, userData, formAddNewcard  } from "./utils/constants.js"
-import {Section } from './components/Section.js';
-import {UserInfo } from './components/UserInfo.js';
-import { PopupWithForm } from './components/PopupWithForm.js';
-import { PopupWithImage } from './components/PopupWithImage.js';
+   nameInput, profInput, cards, userData, formAddNewcard  } from "../utils/constants.js"
+import {Section } from '../components/Section.js';
+import {UserInfo } from '../components/UserInfo.js';
+import { PopupWithForm } from '../components/PopupWithForm.js';
+import { PopupWithImage } from '../components/PopupWithImage';
 
 
 const bigImage = new PopupWithImage(popupPicture);
@@ -29,7 +29,8 @@ const popupNewProfileNewClass = new PopupWithForm ({
     addProfileInfo.setUserInfo(data);
     popupNewProfileNewClass.closePopup();
   }
-}, popupNewProfile)
+}, popupNewProfile);
+console.log(popupNewProfileNewClass._getInputValues())
 
 const firstCards = new Section ({
   items:initialCards,
@@ -49,40 +50,20 @@ const addCardPopup = new PopupWithForm({
 }, popupNewPlace);
 
 
-// Создаем карточки из массива
-
-function inactiveSubmit(popup) {
-const buttonElement = popup.querySelector('.popup__submit');
-buttonElement.classList.add('popup__submit_inactive');
-buttonElement.disabled = true;
-}
 
 buttonEdit.addEventListener("click", () => {
   const newUserData = addProfileInfo.getUserInfo();
   nameInput.value = newUserData.name;
   profInput.value = newUserData.profession;
-  inactiveSubmit(popupNewProfile);
   popupNewProfileNewClass.openPopup();
 })
 
 
-// Открытие попапа добавления карточки
-
 buttonAdd.addEventListener("click", () => {
   formAddNewcard.reset();
   addCardPopup.openPopup();
-  inactiveSubmit(popupNewPlace);
 });
 
-// / Создаем карточки из массива
-const InsertCards = new Section ({
-  items:initialCards,
-
-  renderer: (item) => {
-    const defaultCard = createCard (item);
-    InsertCards.addItem(defaultCard);
-  }
-}, cards);
 
 const validatePopupForm = new FormValidator(params, formEditProfileElement);
 validatePopupForm.enableValidation();
