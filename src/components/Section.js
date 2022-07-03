@@ -4,9 +4,11 @@ export class Section {
     this._renderer = renderer;
     this._container = container;
   }
- 
-  renderItems() {
-    this._renderedItems.forEach((item) => {this._renderer(item)});
+
+  renderItems(cardsFromServer) {
+    cardsFromServer.forEach((item) => {
+      this._renderer(item);
+    });
   }
 
   addItem(element) {

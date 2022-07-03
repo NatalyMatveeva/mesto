@@ -2,11 +2,12 @@ import "./index.css";
 import { Card } from "../components/Card.js";
 import { FormValidator, params } from "../components/FormValidator.js";
 import {
-  initialCards,
+  // initialCards,
   popupPicture,
   popupNewProfile,
   buttonEdit,
   popupNewPlace,
+  popupDelete,
   buttonAdd,
   formEditProfileElement,
   nameInput,
@@ -14,20 +15,56 @@ import {
   cards,
   userData,
   formAddNewcard,
+  popupNewAvatar,
+  buttonAvatar,
 } from "../utils/constants.js";
 import { Section } from "../components/Section.js";
 import { UserInfo } from "../components/UserInfo.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
-import { PopupWithImage } from "../components/PopupWithImage";
+import { PopupWithImage } from "../components/PopupWithImage.js";
+import { PopupDelete } from "../components/PopupDelete.js";
+import { Api } from "../components/Api.js";
+// import { internalIP } from "webpack-dev-server";
 
-const bigImage = new PopupWithImage(popupPicture);
+let userId = null;
+
+const addProfileInfo = new UserInfo(userData);
 
 const createCard = (data) => {
   const card = new Card(
     {
       data,
+      userId,
       handleCardClick: (link, name) => {
         bigImage.openPopup(link, name);
+      },
+      deleteCardPopup: (cardElement, id) => {
+        deletePopup.openPopup(cardElement, id);
+      },
+      handleLike: () => {
+        const like = card._element.querySelector(".card__like");
+        if (like.classList.contains("card__like_active")) {
+          api
+            .setLike(data)
+            .then((data) => {
+              card._element.querySelector(".card__likes-number").textContent =
+                data.likes.length;
+            })
+
+            .catch((err) => {
+              console.log(err);
+            });
+        } else {
+          api
+            .removeLike(data)
+            .then((data) => {
+              card._element.querySelector(".card__likes-number").textContent =
+                data.likes.length;
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        }
       },
     },
     "#tmpl"
@@ -35,21 +72,9 @@ const createCard = (data) => {
   return card.generateCard();
 };
 
-const addProfileInfo = new UserInfo(userData);
-
-const popupNewProfileNewClass = new PopupWithForm(
-  {
-    submitHandler: (data) => {
-      addProfileInfo.setUserInfo(data);
-      popupNewProfileNewClass.closePopup();
-    },
-  },
-  popupNewProfile
-);
-
 const firstCards = new Section(
   {
-    items: initialCards,
+    items: [],
     renderer: (item) => {
       const firstCard = createCard(item);
       firstCards.addItem(firstCard);
@@ -57,18 +82,107 @@ const firstCards = new Section(
   },
   cards
 );
-firstCards.renderItems();
+// firstCards.renderItems();
+
+//Создаем экземпляр Api
+const api = new Api({
+  url: "https://mesto.nomoreparties.co/v1/cohort-44",
+  headers: {
+    authorization: "d05d4a32-12bb-4bfc-b2be-f357c1740080",
+    "Content-Type": "application/json",
+  },
+});
+
+Promise.all([api.getUserInfo(), api.getCards()])
+  .then(([userData, initialCards]) => {
+    userId = userData._id;
+    addProfileInfo.setUserInfo(userData);
+    addProfileInfo.setUserAvatar(userData);
+    initialCards.reverse();
+    firstCards.renderItems(initialCards);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+
+const bigImage = new PopupWithImage(popupPicture);
+
+//Редактирование профиля
+const popupNewProfileNewClass = new PopupWithForm(
+  {
+    submitHandler: (data) => {
+      popupNewProfileNewClass.renderLoading(true);
+      addProfileInfo.setUserInfo(data);
+      popupNewProfileNewClass.closePopup();
+      api
+        .editProfile(data)
+
+        .finally(() => {
+          popupNewProfileNewClass.renderLoading(false);
+        });
+    },
+  },
+  popupNewProfile
+);
+
+const popupNewAvatarProfile = new PopupWithForm(
+  {
+    submitHandler: (data) => {
+      popupNewAvatarProfile.renderLoading(true);
+      popupNewAvatarProfile.closePopup();
+      api
+        .editAvatar(data)
+
+        .then((res) => addProfileInfo.setUserAvatar(res))
+
+        .finally(() => {
+          popupNewAvatarProfile.renderLoading(false);
+        });
+    },
+  },
+  popupNewAvatar
+);
+popupNewAvatarProfile.setEventListeners();
+
+buttonAvatar.addEventListener("click", () => {
+  popupNewAvatarProfile.openPopup();
+});
 
 const addCardPopup = new PopupWithForm(
   {
     submitHandler: (data) => {
-      const newCard = createCard(data);
-      firstCards.addItem(newCard);
-      addCardPopup.closePopup();
+      addCardPopup.renderLoading(true);
+      api
+        .createCard(data)
+        .then((data) => {
+          const newCard = createCard(data);
+          firstCards.addItem(newCard);
+          addCardPopup.closePopup();
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+        .finally(() => {
+          addCardPopup.renderLoading(false);
+        });
     },
   },
   popupNewPlace
 );
+
+const deletePopup = new PopupDelete(
+  {
+    submitHandler: (element, id) => {
+      deletePopup.closePopup();
+      api.deleteCard(id).catch((err) => {
+        console.log(err);
+      });
+      element.remove();
+    },
+  },
+  popupDelete
+);
+deletePopup.setEventListeners();
 
 buttonEdit.addEventListener("click", () => {
   const newUserData = addProfileInfo.getUserInfo();
