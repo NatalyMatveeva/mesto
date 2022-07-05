@@ -10,6 +10,7 @@ export const nameInput = document.querySelector(".popup__name");
 export const profInput = document.querySelector(".popup__prof");
 export const cards = document.querySelector(".cards");
 export const formAddNewcard = document.querySelector(".popup-newcard__form");
+export const formAddAvatar = document.querySelector(".popup-avatar__form");
 export const buttonAvatar = document.querySelector(".profile__avatar-button");
 
 
@@ -47,6 +48,13 @@ export const initialCards = [
   },
 ];
 
+export const params = {
+  formSelector: ".form",
+  inputSelector: ".popup__style",
+  submitButtonSelector: ".popup__submit",
+  inactiveButtonClass: "popup__submit_inactive",
+  inputErrorClass: "popup__style_error",
+};
 
 
 

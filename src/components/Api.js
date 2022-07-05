@@ -36,7 +36,7 @@ export class Api {
         name: data.name,
         about: data.about,
       }),
-    });
+    }).then(this._handleResponse);
   }
 
   // Добавление новой карточки

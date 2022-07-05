@@ -73,10 +73,4 @@ export class FormValidator {
   };
 }
 
-export const params = {
-  formSelector: ".form",
-  inputSelector: ".popup__style",
-  submitButtonSelector: ".popup__submit",
-  inactiveButtonClass: "popup__submit_inactive",
-  inputErrorClass: "popup__style_error",
-};
+

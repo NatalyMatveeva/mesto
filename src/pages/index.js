@@ -1,6 +1,7 @@
 import "./index.css";
 import { Card } from "../components/Card.js";
-import { FormValidator, params } from "../components/FormValidator.js";
+import { FormValidator} from "../components/FormValidator.js";
+
 import {
   // initialCards,
   popupPicture,
@@ -17,6 +18,8 @@ import {
   formAddNewcard,
   popupNewAvatar,
   buttonAvatar,
+  params,
+  formAddAvatar
 } from "../utils/constants.js";
 import { Section } from "../components/Section.js";
 import { UserInfo } from "../components/UserInfo.js";
@@ -112,10 +115,17 @@ const popupNewProfileNewClass = new PopupWithForm(
   {
     submitHandler: (data) => {
       popupNewProfileNewClass.renderLoading(true);
-      addProfileInfo.setUserInfo(data);
-      popupNewProfileNewClass.closePopup();
-      api
-        .editProfile(data)
+
+      api.editProfile(data)
+
+       .then((res)=>{
+        addProfileInfo.setUserInfo(res);
+        popupNewProfileNewClass.closePopup();
+       })
+
+       .catch((err) =>{
+        console.log(err)
+       })
 
         .finally(() => {
           popupNewProfileNewClass.renderLoading(false);
@@ -129,12 +139,16 @@ const popupNewAvatarProfile = new PopupWithForm(
   {
     submitHandler: (data) => {
       popupNewAvatarProfile.renderLoading(true);
-      popupNewAvatarProfile.closePopup();
-      api
-        .editAvatar(data)
 
-        .then((res) => addProfileInfo.setUserAvatar(res))
+      api.editAvatar(data)
 
+        .then((res) => {addProfileInfo.setUserAvatar(res);
+        popupNewAvatarProfile.closePopup();
+    })
+
+       .catch((err) => {
+      console.log(err);
+    })
         .finally(() => {
           popupNewAvatarProfile.renderLoading(false);
         });
@@ -152,16 +166,18 @@ const addCardPopup = new PopupWithForm(
   {
     submitHandler: (data) => {
       addCardPopup.renderLoading(true);
-      api
-        .createCard(data)
+
+      api.createCard(data)
         .then((data) => {
           const newCard = createCard(data);
           firstCards.addItem(newCard);
           addCardPopup.closePopup();
         })
+
         .catch((err) => {
           console.log(err);
         })
+
         .finally(() => {
           addCardPopup.renderLoading(false);
         });
@@ -173,11 +189,16 @@ const addCardPopup = new PopupWithForm(
 const deletePopup = new PopupDelete(
   {
     submitHandler: (element, id) => {
-      deletePopup.closePopup();
-      api.deleteCard(id).catch((err) => {
+
+      api.deleteCard(id)
+      .then((res)=>{
+        element.remove(res);
+        deletePopup.closePopup()
+      })
+
+      .catch((err) => {
         console.log(err);
       });
-      element.remove();
     },
   },
   popupDelete
@@ -198,8 +219,12 @@ buttonAdd.addEventListener("click", () => {
 
 const validatePopupForm = new FormValidator(params, formEditProfileElement);
 validatePopupForm.enableValidation();
+
 const validateAddNewcardForm = new FormValidator(params, formAddNewcard);
 validateAddNewcardForm.enableValidation();
+
+const validateAvatarForm = new FormValidator(params, formAddAvatar);
+validateAvatarForm.enableValidation();
 
 bigImage.setEventListeners();
 popupNewProfileNewClass.setEventListeners();

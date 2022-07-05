@@ -131,10 +131,12 @@
             id = "avatar"
             name="avatar"
             class="popup__style popup-avatar__link"
-            placeholder="Ссылка на картинку"
+            minlength="2"
+            maxlength="30"
+            placeholder="Выберите фотографию"
             required
             />
-
+            <span  class="avatar-error popup__top-error popup__error"></span>
             <button type="submit" class="popup__submit">Сохранить</button>
         </form>
       </div>
